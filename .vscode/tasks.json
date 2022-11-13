@@ -1,0 +1,120 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "cmake debug",
+      "command": "/usr/local/bin/cmake",
+      "args": [
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+        "-G 'CodeBlocks - Unix Makefiles'",
+        "-S ${workspaceFolder}",
+        "-B ${workspaceFolder}/build/debug"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "cmake生成debug的任务。",
+      "dependsOn": [
+        "clear default"
+      ]
+    },
+    {
+      "type": "cppbuild",
+      "label": "cmake release",
+      "command": "/usr/local/bin/cmake",
+      "args": [
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+        "-G 'CodeBlocks - Unix Makefiles'",
+        "-S ${workspaceFolder}",
+        "-B ${workspaceFolder}/build/release"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "cmake生成release的任务。",
+      "dependsOn": [
+        "clear default"
+      ]
+    },
+    {
+      "type": "cppbuild",
+      "label": "一键生成debug构建",
+      "command": "/usr/bin/make",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}/build/debug"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "make生成debug的任务。",
+      "dependsOn": [
+        "cmake debug"
+      ]
+    },
+    {
+      "type": "cppbuild",
+      "label": "一键生成release构建",
+      "command": "/usr/bin/make",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}/build/release"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "make生成release的任务。",
+      "dependsOn": [
+        "cmake release"
+      ]
+    },
+    {
+      "type": "shell",
+      "label": "clear",
+      "command": "rm",
+      "args": [
+        "-rf",
+        "*"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "清除所有生成"
+    },
+    {
+      "type": "shell",
+      "label": "clear default",
+      "command": "ls *|grep -v debug|grep -v release |xargs rm -rf",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "清除所有生成"
+    }
+  ],
+  "version": "2.0.0"
+}
