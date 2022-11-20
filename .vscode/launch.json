@@ -5,7 +5,7 @@
       "name": "lldb Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceRoot}/build/debug/TinyProject",
+      "program": "${workspaceRoot}/build/debug/src/TinyProject",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
